@@ -1,1 +1,15 @@
-<p>{{comment.contenu}}</p>
+<div class="fondComment rounded-element">
+    <div *ngIf="!modificationState">
+        <p (dblclick)="modifie()">{{comment.contenu}}</p>
+    </div>
+    <div *ngIf="modificationState">
+    <input (keydown.enter)="modifie()"
+        type="text"
+        value="{{comment.contenu}}"
+        [(ngModel)]="this.comment.contenu"
+    /><br />
+    </div>
+<button class="modif" (click)="deleteComment(comment)">❌</button>
+<button class="modif" (click)="modifie()">🖍</button>
+
+</div>
